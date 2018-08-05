@@ -7,11 +7,11 @@ Bir kullanıcı olarak,
 5. Kapıcıya günlük istek listesi iletebilmeliyim.
 6. Toplanan aidatların nasıl kullanıldığını görebilmeliyim.
 7. Şikayet kutusu için şikayet doldurabilmeliyim. 
-//////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 Yönetici olarak, 
-8. Kişinin apartman sakini olup olmadığını denetleme yetkisi olacak.
-9. Duyurular yapabilmeliyim.
-10. Yeni apartman sakinleri tanımlayabilmeliyim.
-11. Apartmanın mali durumunu kontrol edebilmeliyim.
-12. Şikayet kutusundaki şikayetleri görebilmeliyim.
-13. Oylama işlemleri için gerekli yetkilere sahip olmalıyım.
+1. Kişinin apartman sakini olup olmadığını denetleme yetkisi olacak.
+2. Duyurular yapabilmeliyim.
+3. Yeni apartman sakinleri tanımlayabilmeliyim.
+4. Apartmanın mali durumunu kontrol edebilmeliyim.
+5. Şikayet kutusundaki şikayetleri görebilmeliyim.
+6. Oylama işlemleri için gerekli yetkilere sahip olmalıyım.
