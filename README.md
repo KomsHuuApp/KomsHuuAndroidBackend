@@ -7,6 +7,7 @@ Bir kullanıcı olarak,
 5. Kapıcıya günlük istek listesi iletebilmeliyim.
 6. Toplanan aidatların nasıl kullanıldığını görebilmeliyim.
 7. Şikayet kutusu için şikayet doldurabilmeliyim.
+
 Yönetici olarak, 
 8. Kişinin apartman sakini olup olmadığını denetleme yetkisi olacak.
 9. Duyurular yapabilmeliyim.
