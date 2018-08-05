@@ -6,7 +6,7 @@ Bir kullanıcı olarak,
 4. Apartman bazında büyük bir karar alınacağı zaman oy kullanabilmeliyim.
 5. Kapıcıya günlük istek listesi iletebilmeliyim.
 6. Toplanan aidatların nasıl kullanıldığını görebilmeliyim.
-7. Şikayet kutusu için şikayet doldurabilmeliyim.
+7. Şikayet kutusu için şikayet doldurabilmeliyim. 
 //////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 Yönetici olarak, 
 8. Kişinin apartman sakini olup olmadığını denetleme yetkisi olacak.
