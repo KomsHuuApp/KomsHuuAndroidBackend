@@ -15,13 +15,13 @@ public class Person {
     private long apartmentId;
     private String password;
     private String username;
-    private long flatId;
+    private int flatNumber;
 
     public Person() {
 
     }
 
-    public Person(long id, String name, String surname, long role, String relativeNumber, String number, String gender, long apartmentId, String password, String username, long flatId) {
+    public Person(long id, String name, String surname, long role, String relativeNumber, String number, String gender, long apartmentId, String password, String username, int flatNumber) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -32,7 +32,7 @@ public class Person {
         this.apartmentId = apartmentId;
         this.password = password;
         this.username = username;
-        this.flatId = flatId;
+        this.flatNumber = flatNumber;
     }
 
     @Id
@@ -118,11 +118,11 @@ public class Person {
         this.username = username;
     }
 
-    public long getFlatId() {
-        return flatId;
+    public int getFlatNumber() {
+        return flatNumber;
     }
 
-    public void setFlatId(long flatId) {
-        this.flatId = flatId;
+    public void setFlatNumber(int flatNumber) {
+        this.flatNumber = flatNumber;
     }
 }

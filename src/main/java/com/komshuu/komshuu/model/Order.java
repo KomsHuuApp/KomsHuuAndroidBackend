@@ -10,25 +10,27 @@ import java.util.Date;
 @Entity
 @Table(name = "orders")
 public class Order {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
     private String orderType;
-    private Date orderDate;
+    private String orderDate;
     private long flatId;
+    private long apartmentId;
 
     public Order() {
 
     }
 
-    public Order(long orderId, String orderType, Date orderDate, long flatId) {
+    public Order(long orderId, String orderType, String orderDate, long flatId, long apartmentId) {
         this.orderId = orderId;
         this.orderType = orderType;
         this.orderDate = orderDate;
         this.flatId = flatId;
+        this.setApartmentId(apartmentId);
     }
 
+    @Id
+    @Column(name = "orderId", columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getOrderId() {
         return orderId;
     }
@@ -45,11 +47,11 @@ public class Order {
         this.orderType = orderType;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -59,5 +61,13 @@ public class Order {
 
     public void setFlatId(long flatId) {
         this.flatId = flatId;
+    }
+
+    public long getApartmentId() {
+        return apartmentId;
+    }
+
+    public void setApartmentId(long apartmentId) {
+        this.apartmentId = apartmentId;
     }
 }

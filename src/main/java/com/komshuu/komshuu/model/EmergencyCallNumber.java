@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class EmergencyCallNumber {
 
     @Id
+    @Column(name = "numberId", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numberId;
     private String name;

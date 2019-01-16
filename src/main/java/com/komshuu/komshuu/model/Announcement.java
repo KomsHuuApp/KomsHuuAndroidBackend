@@ -9,7 +9,7 @@ public class Announcement {
     private long announcementId;
     private String text;
     private long apartmentId;
-    private Date announcementDate;
+    private String announcementDate;
     private int announcementImportance;
     private long announcerId;
 
@@ -17,13 +17,13 @@ public class Announcement {
 
     }
 
-    public Announcement(long announcementId, String text, long apartmentId, Date announcementDate, int announcementImportance, long announcerId) {
-        this.setAnnouncementId(announcementId);
-        this.setText(text);
-        this.setApartmentId(apartmentId);
-        this.setAnnouncementDate(announcementDate);
-        this.setAnnouncementImportance(announcementImportance);
-        this.setAnnouncerId(announcerId);
+    public Announcement(long announcementId, String text, long apartmentId, String announcementDate, int announcementImportance, long announcerId) {
+        this.announcementId = announcementId;
+        this.text = text;
+        this.apartmentId = apartmentId;
+        this.announcementDate = announcementDate;
+        this.announcementImportance = announcementImportance;
+        this.announcerId = announcerId;
     }
 
     @Id
@@ -53,11 +53,11 @@ public class Announcement {
         this.apartmentId = apartmentId;
     }
 
-    public Date getAnnouncementDate() {
+    public String getAnnouncementDate() {
         return announcementDate;
     }
 
-    public void setAnnouncementDate(Date announcementDate) {
+    public void setAnnouncementDate(String announcementDate) {
         this.announcementDate = announcementDate;
     }
 

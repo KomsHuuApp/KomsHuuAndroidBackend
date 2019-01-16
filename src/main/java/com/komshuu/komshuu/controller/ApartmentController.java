@@ -3,10 +3,7 @@ package com.komshuu.komshuu.controller;
 import com.komshuu.komshuu.model.Apartment;
 import com.komshuu.komshuu.repository.ApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,5 +22,10 @@ public class ApartmentController {
     @GetMapping("/getAllApartmens")
     public List<Apartment> getAllApartments() {
         return apartmentRepository.findAll();
+    }
+
+    @GetMapping("/getApartmentById")
+    public Apartment getApartmentById(@RequestParam(value = "apartmentId", required = true) long id) {
+        return apartmentRepository.getApartmentByApartmentId(id);
     }
 }
