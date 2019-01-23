@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author sozboke
+ */
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
     Person getPersonByIdAndApartmentId(long id, long apartmentId);
@@ -13,4 +16,6 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findAllByApartmentId(long apartmentId);
 
     List<Person> findAllByFlatNumberAndApartmentId(int flatNumber, long apartmentId);
+
+    Person save(Person person);
 }

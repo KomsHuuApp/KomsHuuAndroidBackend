@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-/*
-@author Servet Özböke
+/**
+ * @author sozboke
  */
-
 @RestController
 public class PersonController {
 
@@ -63,6 +62,20 @@ public class PersonController {
         return personRepository.getPersonByIdAndApartmentId(id, apartmentId).getNumber();
     }
 
+    @PutMapping("/updatePerson")
+    public Person updatePerson(@Valid @RequestBody Person person) {
+        return personRepository.save(person);
+    }
+
+    @DeleteMapping("/deletePerson")
+    public boolean deletePerson(@Valid @RequestBody Person person) {
+        if(personRepository.getPersonByIdAndApartmentId(person.getId(), person.getApartmentId()) != null) {
+            personRepository.delete(person);
+            return true;
+        }
+        return false;
+    }
+
     @GetMapping("/getEmergencyNumbers")
     public List<EmergencyCallNumber> getEmergencyNumbers(@RequestParam(value = "apartmentId", required = true) long apartmentId) {
         return emergencyCallNumberRepository.findAllByApartmentId(apartmentId);
@@ -86,6 +99,20 @@ public class PersonController {
         return orderRepository.findByOrderId(orderId);
     }
 
+    @PutMapping("/updateOrder")
+    public Order updateOrder(@Valid @RequestBody Order order) {
+        return orderRepository.save(order);
+    }
+
+    @DeleteMapping("/deleteOrder")
+    public boolean deleteOrder(@Valid @RequestBody Order order) {
+        if(orderRepository.getByOrderIdAndApartmentId(order.getOrderId(), order.getApartmentId()) != null) {
+            orderRepository.delete(order);
+            return true;
+        }
+        return false;
+    }
+
     @PostMapping("/addAnnouncement")
     public Announcement addAnnouncement(@Valid @RequestBody Announcement announcement) {
         return announcementRepository.save(announcement);
@@ -99,5 +126,19 @@ public class PersonController {
     @GetMapping("/getAnnouncement")
     public Announcement getAnnouncement(@RequestParam(value = "announcementId") long announcementId) {
         return announcementRepository.findAnnouncementByAnnouncementId(announcementId);
+    }
+
+    @PutMapping("/updateAnnouncement")
+    public Announcement updateAnnouncement(@Valid @RequestBody Announcement announcement) {
+        return announcementRepository.save(announcement);
+    }
+
+    @DeleteMapping("/deleteAnnouncement")
+    public boolean deleteAnnouncement(@Valid @RequestBody Announcement announcement) {
+        if(announcementRepository.findAnnouncementByAnnouncementId(announcement.getAnnouncementId()) != null) {
+            announcementRepository.delete(announcement);
+            return true;
+        }
+        return false;
     }
 }

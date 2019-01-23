@@ -2,6 +2,9 @@ package com.komshuu.komshuu.model;
 
 import javax.persistence.*;
 
+/**
+ * @author sozboke
+ */
 @Entity
 @Table(name = "flats")
 public class Flat {

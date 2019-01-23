@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+/**
+ * @author sozboke
+ */
 @RestController
 public class EmergencyCallNumberController {
 

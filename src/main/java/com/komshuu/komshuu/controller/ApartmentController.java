@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @author sozboke
+ */
 @RestController
 public class ApartmentController {
 
@@ -28,4 +31,19 @@ public class ApartmentController {
     public Apartment getApartmentById(@RequestParam(value = "apartmentId", required = true) long id) {
         return apartmentRepository.getApartmentByApartmentId(id);
     }
+
+    @PutMapping("/updateApartment")
+    public Apartment updateApartment(@Valid @RequestBody Apartment apartment) {
+        return apartmentRepository.save(apartment);
+    }
+
+    @DeleteMapping("/deleteApartment")
+    public boolean deleteApartment(@Valid @RequestBody Apartment apartment) {
+        if(apartmentRepository.getApartmentByApartmentId(apartment.getApartmentId()) != null) {
+            apartmentRepository.delete(apartment);
+            return true;
+        }
+        return false;
+    }
+
 }

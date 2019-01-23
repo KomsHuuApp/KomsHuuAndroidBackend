@@ -3,6 +3,9 @@ package com.komshuu.komshuu.model;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * @author sozboke
+ */
 @Entity
 @Table(name = "announcements")
 public class Announcement {

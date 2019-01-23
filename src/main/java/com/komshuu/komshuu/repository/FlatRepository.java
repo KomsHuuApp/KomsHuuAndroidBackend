@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author sozboke
+ */
 @Repository
 public interface FlatRepository extends JpaRepository<Flat, Long> {
     Flat getFlatByFlatIdAndApartmentId(long id, long apartmentId);
