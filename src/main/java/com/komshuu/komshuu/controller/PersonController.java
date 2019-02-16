@@ -1,13 +1,7 @@
 package com.komshuu.komshuu.controller;
 
-import com.komshuu.komshuu.model.Announcement;
-import com.komshuu.komshuu.model.EmergencyCallNumber;
-import com.komshuu.komshuu.model.Order;
-import com.komshuu.komshuu.model.Person;
-import com.komshuu.komshuu.repository.AnnouncementRepository;
-import com.komshuu.komshuu.repository.EmergencyCallNumberRepository;
-import com.komshuu.komshuu.repository.OrderRepository;
-import com.komshuu.komshuu.repository.PersonRepository;
+import com.komshuu.komshuu.model.*;
+import com.komshuu.komshuu.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +25,9 @@ public class PersonController {
 
     @Autowired
     private AnnouncementRepository announcementRepository;
+
+    @Autowired
+    private ComplaintRepository complaintRepository;
 
     @PostMapping("/addPerson")
     public Person addNewPerson(@Valid @RequestBody Person person) {
@@ -79,6 +76,30 @@ public class PersonController {
     @GetMapping("/getEmergencyNumbers")
     public List<EmergencyCallNumber> getEmergencyNumbers(@RequestParam(value = "apartmentId", required = true) long apartmentId) {
         return emergencyCallNumberRepository.findAllByApartmentId(apartmentId);
+    }
+
+    @PostMapping("/addComplaint")
+    public Complaint addComplaint(@Valid @RequestBody Complaint complaint) {
+        return complaintRepository.save(complaint);
+    }
+
+    @GetMapping("/getComplaints")
+    public List<Complaint> getComplaints(@RequestParam(value = "apartmentId", required = true) long apartmentId) {
+        return complaintRepository.findAllByApartmentId(apartmentId);
+    }
+
+    @PutMapping("/updateComplaint")
+    public Complaint updateComplaint(@Valid @RequestBody Complaint complaint) {
+        return complaintRepository.save(complaint);
+    }
+
+    @DeleteMapping("/deleteComplaint")
+    public boolean deleteComplaint(@Valid @RequestBody Complaint complaint) {
+        if(complaintRepository.getComplaintByApartmentIdAndPersonID(complaint.getApartmentId(), complaint.getPersonID()) != null) {
+            complaintRepository.delete(complaint);
+            return true;
+        }
+        return false;
     }
 
     @PostMapping("/addOrder")

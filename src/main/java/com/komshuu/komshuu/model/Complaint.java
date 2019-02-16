@@ -7,18 +7,20 @@ import java.util.Date;
 @Table(name = "complaints")
 public class Complaint {
     private long complaintID;
-    private Date date;
+    private String date;
     private long personID;
     private String text;
+    private long apartmentId;
 
     public Complaint() {
     }
 
-    public Complaint(long complaintID, Date date, long personID, String text) {
+    public Complaint(long complaintID, String date, long personID, String text, long apartmentId) {
         this.personID = personID;
         this.complaintID = complaintID;
         this.date = date;
         this.text = text;
+        this.apartmentId = apartmentId;
     }
 
     @Id
@@ -40,11 +42,11 @@ public class Complaint {
         this.text = text;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -56,5 +58,11 @@ public class Complaint {
         this.personID = personID;
     }
 
+    public long getApartmentId() {
+        return apartmentId;
+    }
 
+    public void setApartmentId(long apartmentId) {
+        this.apartmentId = apartmentId;
+    }
 }
