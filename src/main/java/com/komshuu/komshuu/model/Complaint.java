@@ -6,9 +6,12 @@ import java.util.Date;
 @Entity
 @Table(name = "complaints")
 public class Complaint {
-    private long complaintID;
+    @Id
+    @Column(name = "complaintId", columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long complaintId;
     private String date;
-    private long personID;
+    private long personId;
     private String text;
     private long apartmentId;
 
@@ -16,22 +19,19 @@ public class Complaint {
     }
 
     public Complaint(long complaintID, String date, long personID, String text, long apartmentId) {
-        this.personID = personID;
-        this.complaintID = complaintID;
+        this.personId = personID;
+        this.complaintId = complaintID;
         this.date = date;
         this.text = text;
         this.apartmentId = apartmentId;
     }
 
-    @Id
-    @Column(name = "complaintId", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getComplaintID() {
-        return complaintID;
+        return complaintId;
     }
 
     public void setComplaintID(long complaintID) {
-        this.complaintID = complaintID;
+        this.complaintId = complaintID;
     }
 
     public String getText() {
@@ -51,11 +51,11 @@ public class Complaint {
     }
 
     public long getPersonID() {
-        return personID;
+        return personId;
     }
 
     public void setPersonID(long personID) {
-        this.personID = personID;
+        this.personId = personID;
     }
 
     public long getApartmentId() {
