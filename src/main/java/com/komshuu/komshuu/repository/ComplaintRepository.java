@@ -10,5 +10,5 @@ import java.util.List;
 public interface ComplaintRepository  extends JpaRepository<Complaint, Long> {
     List<Complaint> findAllByApartmentId(long apartmentId);
 
-    Complaint getComplaintByApartmentIdAndPersonID(long apartmentId, long personId);
+    Complaint getComplaintByApartmentIdAndPersonId(long apartmentId, long personId);
 }

@@ -95,7 +95,7 @@ public class PersonController {
 
     @DeleteMapping("/deleteComplaint")
     public boolean deleteComplaint(@Valid @RequestBody Complaint complaint) {
-        if(complaintRepository.getComplaintByApartmentIdAndPersonID(complaint.getApartmentId(), complaint.getPersonID()) != null) {
+        if(complaintRepository.getComplaintByApartmentIdAndPersonId(complaint.getApartmentId(), complaint.getPersonID()) != null) {
             complaintRepository.delete(complaint);
             return true;
         }
