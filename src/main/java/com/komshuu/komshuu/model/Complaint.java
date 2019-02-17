@@ -26,11 +26,11 @@ public class Complaint {
         this.apartmentId = apartmentId;
     }
 
-    public long getComplaintID() {
+    public long getComplaintId() {
         return complaintId;
     }
 
-    public void setComplaintID(long complaintID) {
+    public void setComplaintId(long complaintID) {
         this.complaintId = complaintID;
     }
 
@@ -50,12 +50,12 @@ public class Complaint {
         this.date = date;
     }
 
-    public long getPersonID() {
+    public long getPersonId() {
         return personId;
     }
 
-    public void setPersonID(long personID) {
-        this.personId = personID;
+    public void setPersonId(long personId) {
+        this.personId = personId;
     }
 
     public long getApartmentId() {
