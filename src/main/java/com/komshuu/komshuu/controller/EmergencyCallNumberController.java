@@ -27,7 +27,7 @@ public class EmergencyCallNumberController {
 
     @DeleteMapping("/deleteEmergencyNumber")
     public boolean deleteEmergencyNumber(@Valid @RequestBody EmergencyCallNumber emergencyCallNumber) {
-        if (emergencyCallNumberRepository.findByIdAndApartmentId(emergencyCallNumber.getId(), emergencyCallNumber.getApartmentId()) != null) {
+        if (emergencyCallNumberRepository.findByNumberIdAndApartmentId(emergencyCallNumber.getId(), emergencyCallNumber.getApartmentId()) != null) {
             emergencyCallNumberRepository.delete(emergencyCallNumber);
             return true;
         }
