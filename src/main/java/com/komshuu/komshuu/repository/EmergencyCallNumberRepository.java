@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface EmergencyCallNumberRepository extends JpaRepository<EmergencyCallNumber, Long> {
     List<EmergencyCallNumber> findAllByApartmentId(long apartmentId);
+
+    EmergencyCallNumber findByIdAndApartmentId(long id, long apartmentId);
 }
