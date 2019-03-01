@@ -4,10 +4,7 @@ import com.komshuu.komshuu.model.Complaint;
 import com.komshuu.komshuu.model.EmergencyCallNumber;
 import com.komshuu.komshuu.repository.EmergencyCallNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -25,9 +22,10 @@ public class EmergencyCallNumberController {
         return emergencyCallNumberRepository.save(emergencyCallNumber);
     }
 
-    @DeleteMapping("/deleteEmergencyNumber")
-    public boolean deleteEmergencyNumber(@Valid @RequestBody EmergencyCallNumber emergencyCallNumber) {
-        if (emergencyCallNumberRepository.findByNumberIdAndApartmentId(emergencyCallNumber.getId(), emergencyCallNumber.getApartmentId()) != null) {
+    @GetMapping("/deleteEmergencyNumber")
+    public boolean deleteEmergencyNumber(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
+        EmergencyCallNumber emergencyCallNumber = emergencyCallNumberRepository.findByNumberIdAndApartmentId(id, apartmentId);
+        if (emergencyCallNumber != null) {
             emergencyCallNumberRepository.delete(emergencyCallNumber);
             return true;
         }

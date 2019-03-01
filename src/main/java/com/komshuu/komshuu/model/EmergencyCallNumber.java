@@ -29,11 +29,11 @@ public class EmergencyCallNumber {
         this.apartmentId = apartmentId;
     }
 
-    public long getId() {
+    public long getNumberId() {
         return numberId;
     }
 
-    public void setId(long numberId) {
+    public void setNumberId(long numberId) {
         this.numberId = numberId;
     }
 
