@@ -41,7 +41,7 @@ public class PersonController {
 
     @GetMapping("/getPersonById")
     public Person getPersonById(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId", required = true) long apartmentId) {
-        return personRepository.getPersonByIdAndApartmentId(id,apartmentId);
+        return personRepository.getPersonByIdAndApartmentId(id, apartmentId);
     }
 
     @GetMapping("/getPeopleByFlatNo")
@@ -66,7 +66,7 @@ public class PersonController {
 
     @DeleteMapping("/deletePerson")
     public boolean deletePerson(@Valid @RequestBody Person person) {
-        if(personRepository.getPersonByIdAndApartmentId(person.getId(), person.getApartmentId()) != null) {
+        if (personRepository.getPersonByIdAndApartmentId(person.getId(), person.getApartmentId()) != null) {
             personRepository.delete(person);
             return true;
         }
@@ -95,7 +95,7 @@ public class PersonController {
 
     @DeleteMapping("/deleteComplaint")
     public boolean deleteComplaint(@Valid @RequestBody Complaint complaint) {
-        if(complaintRepository.getComplaintByApartmentIdAndPersonId(complaint.getApartmentId(), complaint.getPersonId()) != null) {
+        if (complaintRepository.getComplaintByApartmentIdAndPersonId(complaint.getApartmentId(), complaint.getPersonId()) != null) {
             complaintRepository.delete(complaint);
             return true;
         }
@@ -115,6 +115,14 @@ public class PersonController {
         return null;
     }
 
+    @GetMapping("/getOrdersByDate")
+    public List<Order> getOrdersById(@RequestParam(value = "role") long role, @RequestParam(value = "apartmentId") long apartmentId, @RequestParam(value = "date") String date) {
+        if (role == 3) {
+            return orderRepository.findAllByApartmentIdAndAndOrderDate(apartmentId, date);
+        }
+        return null;
+    }
+
     @GetMapping("/getOrder")
     public Order getOrder(@RequestParam(value = "orderId") long orderId) {
         return orderRepository.findByOrderId(orderId);
@@ -127,7 +135,7 @@ public class PersonController {
 
     @DeleteMapping("/deleteOrder")
     public boolean deleteOrder(@Valid @RequestBody Order order) {
-        if(orderRepository.getByOrderIdAndApartmentId(order.getOrderId(), order.getApartmentId()) != null) {
+        if (orderRepository.getByOrderIdAndApartmentId(order.getOrderId(), order.getApartmentId()) != null) {
             orderRepository.delete(order);
             return true;
         }
@@ -156,10 +164,15 @@ public class PersonController {
 
     @DeleteMapping("/deleteAnnouncement")
     public boolean deleteAnnouncement(@Valid @RequestBody Announcement announcement) {
-        if(announcementRepository.findAnnouncementByAnnouncementId(announcement.getAnnouncementId()) != null) {
+        if (announcementRepository.findAnnouncementByAnnouncementId(announcement.getAnnouncementId()) != null) {
             announcementRepository.delete(announcement);
             return true;
         }
         return false;
+    }
+
+    @GetMapping("/login")
+    public Person findLogger(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+        return personRepository.findByUsernameAndPassword(username, password);
     }
 }

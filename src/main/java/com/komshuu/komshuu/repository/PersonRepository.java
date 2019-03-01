@@ -18,4 +18,6 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findAllByFlatNumberAndApartmentId(int flatNumber, long apartmentId);
 
     Person save(Person person);
+
+    Person findByUsernameAndPassword(String username, String password);
 }
