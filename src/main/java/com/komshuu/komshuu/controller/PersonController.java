@@ -93,7 +93,7 @@ public class PersonController {
         return complaintRepository.save(complaint);
     }
 
-    @DeleteMapping("/deleteComplaint")
+    @GetMapping("/deleteComplaint")
     public boolean deleteComplaint(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
         Complaint complaint = complaintRepository.findByComplaintIdAndApartmentId(id, apartmentId);
         if (complaint != null) {
@@ -134,7 +134,7 @@ public class PersonController {
         return orderRepository.save(order);
     }
 
-    @DeleteMapping("/deleteOrder")
+    @GetMapping("/deleteOrder")
     public boolean deleteOrder(@RequestParam(value = "id", required = true)long id, @RequestParam(value = "apartmentId", required = true)long apartmentId) {
         Order order = orderRepository.findByOrderIdAndApartmentId(id, apartmentId);
         if (order != null) {
@@ -164,7 +164,7 @@ public class PersonController {
         return announcementRepository.save(announcement);
     }
 
-    @DeleteMapping("/deleteAnnouncement")
+    @GetMapping("/deleteAnnouncement")
     public boolean deleteAnnouncement(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
         Announcement announcement = announcementRepository.findByAnnouncementIdAndApartmentId(id, apartmentId);
         if (announcement != null) {
