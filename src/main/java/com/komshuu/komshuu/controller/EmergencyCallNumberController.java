@@ -31,4 +31,8 @@ public class EmergencyCallNumberController {
         }
         return false;
     }
+    @PutMapping("/updateEmergencyNumber")
+    public EmergencyCallNumber updateEmergencyNumber(@Valid @RequestBody EmergencyCallNumber emergencyCallNumber) {
+        return emergencyCallNumberRepository.save(emergencyCallNumber);
+    }
 }
