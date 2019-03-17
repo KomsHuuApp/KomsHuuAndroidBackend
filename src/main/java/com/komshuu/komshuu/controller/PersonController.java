@@ -214,4 +214,9 @@ public class PersonController {
     public Voting addVoting(@Valid @RequestBody Voting voting) {
         return votingRepository.save(voting);
     }
+
+    @GetMapping("/getVoting")
+    public Voting getVoting(@RequestParam(value = "voteId") long voteId) {
+        return votingRepository.findByVoteID(voteId);
+    }
 }
