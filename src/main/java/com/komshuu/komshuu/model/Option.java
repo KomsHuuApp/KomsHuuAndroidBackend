@@ -15,15 +15,17 @@ public class Option {
     private long optionId;
     private String status;
     private long pollId;
+    private int pollNumber;
 
     public Option() {
 
     }
 
-    public Option(long optionId, String status, long pollId) {
+    public Option(long optionId, String status, long pollId, int pollNumber) {
         this.optionId = optionId;
         this.status = status;
         this.pollId = pollId;
+        this.pollNumber = pollNumber;
     }
 
     public long getOptionId() {
@@ -48,5 +50,13 @@ public class Option {
 
     public void setPollId(long pollId) {
         this.pollId = pollId;
+    }
+
+    public int getPollNumber() {
+        return pollNumber;
+    }
+
+    public void setPollNumber(int pollNumber) {
+        this.pollNumber = pollNumber;
     }
 }

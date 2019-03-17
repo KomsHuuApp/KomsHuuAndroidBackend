@@ -2,7 +2,6 @@ package com.komshuu.komshuu.model;
 
 import javax.persistence.*;
 import java.awt.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "polls")
@@ -10,20 +9,18 @@ public class Voting {
     private long voteID;
     private String voteName;
     private long apartmentID;
-    private Date voteDate;
+    private String voteDate;
     private boolean voteState;
-    private List options;
 
     public Voting() {
     }
 
-    public Voting(long voteID, String voteName, long apartmentID, Date voteDate, boolean voteState, List options) {
+    public Voting(long voteID, String voteName, long apartmentID, String voteDate, boolean voteState) {
         this.voteID = voteID;
         this.voteName = voteName;
         this.apartmentID = apartmentID;
         this.voteDate = voteDate;
         this.voteState = voteState;
-        this.options = options;
     }
 
     @Id
@@ -53,11 +50,11 @@ public class Voting {
         this.apartmentID = apartmentID;
     }
 
-    public Date getVoteDate() {
+    public String getVoteDate() {
         return voteDate;
     }
 
-    public void setVoteDate(Date voteDate) {
+    public void setVoteDate(String voteDate) {
         this.voteDate = voteDate;
     }
 
@@ -67,13 +64,5 @@ public class Voting {
 
     public void setVoteState(boolean voteState) {
         this.voteState = voteState;
-    }
-
-    public List getOptions() {
-        return options;
-    }
-
-    public void setOptions(List options) {
-        this.options = options;
     }
 }

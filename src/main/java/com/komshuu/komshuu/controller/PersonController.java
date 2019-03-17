@@ -29,6 +29,12 @@ public class PersonController {
     @Autowired
     private ComplaintRepository complaintRepository;
 
+    @Autowired
+    private OptionRepository optionRepository;
+
+    @Autowired
+    private VotingRepository votingRepository;
+
     @PostMapping("/addPerson")
     public Person addNewPerson(@Valid @RequestBody Person person) {
         return personRepository.save(person);
@@ -177,5 +183,35 @@ public class PersonController {
     @GetMapping("/login")
     public Person findLogger(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
         return personRepository.findByUsernameAndPassword(username, password);
+    }
+
+    @GetMapping("/getOptions")
+    public List<Option> getOptions(@RequestParam(value = "apartmentId") long apartmentId) {
+        Voting voting = votingRepository.findByApartmentIDAndVoteState(apartmentId, true);
+        return optionRepository.findAllByPollId(voting.getVoteID());
+    }
+
+    @PostMapping("/addOptions")
+    public Option addOptions(@Valid @RequestBody Option option) {
+        return optionRepository.save(option);
+    }
+
+    @PostMapping("/voteAnOption")
+    public Option voteAnOption(@RequestParam(value = "optionId") long optionId) {
+        Option option = optionRepository.findByOptionId(optionId);
+        option.setPollNumber(option.getPollNumber() + 1);
+        optionRepository.save(option);
+        return option;
+    }
+
+    @GetMapping("/getPollTitle")
+    public String getPollTitle(@RequestParam(value = "apartmentId") long apartmentId) {
+        String pollTitle = votingRepository.findByApartmentIDAndVoteState(apartmentId, true).getVoteName();
+        return pollTitle;
+    }
+
+    @PostMapping("/addVoting")
+    public Voting addVoting(@Valid @RequestBody Voting voting) {
+        return votingRepository.save(voting);
     }
 }

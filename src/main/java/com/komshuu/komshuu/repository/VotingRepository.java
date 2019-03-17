@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface VotingRepository extends JpaRepository<Voting, Long> {
+    Voting findByApartmentIDAndVoteState(long apartmentId, boolean voteState);
+
+    Voting findByVoteID(long voteId);
 }
