@@ -217,7 +217,7 @@ public class PersonController {
         return votingRepository.save(voting);
     }
 
-    @GetMapping("deleteAllVotes")
+    @GetMapping("/deleteAllVotes")
     public void deleteAllVotes() {
         List<Option> options = optionRepository.findAll();
         for (int i = 0; i < options.size(); i++) {
