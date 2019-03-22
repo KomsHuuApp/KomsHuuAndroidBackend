@@ -4,13 +4,8 @@ import com.komshuu.komshuu.model.*;
 import com.komshuu.komshuu.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * @author sozboke
@@ -44,7 +39,6 @@ public class PersonController {
 
     @PostMapping("/addPerson")
     public Person addNewPerson(@Valid @RequestBody Person person) {
-        sendMail(person);
         return personRepository.save(person);
     }
 
@@ -108,7 +102,7 @@ public class PersonController {
     }
 
     @GetMapping("/deleteComplaint")
-    public boolean deleteComplaint(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
+    public boolean deleteComplaint(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId", required = true) long apartmentId) {
         Complaint complaint = complaintRepository.findByComplaintIdAndApartmentId(id, apartmentId);
         if (complaint != null) {
             complaintRepository.delete(complaint);
@@ -149,7 +143,7 @@ public class PersonController {
     }
 
     @GetMapping("/deleteOrder")
-    public boolean deleteOrder(@RequestParam(value = "id", required = true)long id, @RequestParam(value = "apartmentId", required = true)long apartmentId) {
+    public boolean deleteOrder(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId", required = true) long apartmentId) {
         Order order = orderRepository.findByOrderIdAndApartmentId(id, apartmentId);
         if (order != null) {
             orderRepository.delete(order);
@@ -179,7 +173,7 @@ public class PersonController {
     }
 
     @GetMapping("/deleteAnnouncement")
-    public boolean deleteAnnouncement(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
+    public boolean deleteAnnouncement(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId", required = true)long apartmentId) {
         Announcement announcement = announcementRepository.findByAnnouncementIdAndApartmentId(id, apartmentId);
         if (announcement != null) {
             announcementRepository.delete(announcement);
@@ -245,7 +239,7 @@ public class PersonController {
     }
 
     @GetMapping("/deleteDue")
-    public boolean deleteDue(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
+    public boolean deleteDue(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId", required = true) long apartmentId) {
         Dues dues = duesRepository.findByDuesId(id);
         if (dues != null) {
             duesRepository.delete(dues);
@@ -257,31 +251,5 @@ public class PersonController {
     @PutMapping("/updateDue")
     public Dues updateDue(@Valid @RequestBody Dues dues) {
         return duesRepository.save(dues);
-    }
-
-    public void sendMail(Person person) {
-        final String fromEmail = "noreply@gmail.com";
-        final String password = "ntdY2sX9";
-        final String toEmail = person.getUsername();
-
-        System.out.println("SSLEmail Start");
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "25");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "587");
-        String message = "Komshuu Uygulamasına başarıyla kaydoldunuz. Şifreniz aşağıdaki gibidir.\n" + "Şifreniz:" + person.getPassword();
-        Authenticator auth = new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, password);
-            }
-        };
-        Session session = Session.getDefaultInstance(props, auth);
-        System.out.println("Session created");
-        try {
-            EmailUtil.sendEmail(session, toEmail, "Değerlendirme Süreci Hakkında.", message);
-        } catch (Exception e) {
-        }
-
     }
 }
