@@ -217,6 +217,15 @@ public class PersonController {
         return votingRepository.save(voting);
     }
 
+    @GetMapping("deleteAllVotes")
+    public void deleteAllVotes() {
+        List<Option> options = optionRepository.findAll();
+        for (int i = 0; i < options.size(); i++) {
+            Option option = options.get(i);
+            option.setPollNumber(0);
+            optionRepository.save(option);
+        }
+    }
     @GetMapping("/getVoting")
     public Voting getVoting(@RequestParam(value = "voteId") long voteId) {
         return votingRepository.findByVoteID(voteId);
