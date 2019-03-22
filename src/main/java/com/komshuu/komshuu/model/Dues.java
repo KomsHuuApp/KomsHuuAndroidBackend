@@ -13,14 +13,14 @@ public class Dues {
     private double totalPayment;
     private long apartmentId;
     private long flatNumber;
-    private Date paymentDate;
+    private String paymentDate;
 
     public void Dues() {
 
     }
 
 
-    public void Dues(long duesId, double totalPayment, long apartmentId, long flatNumber, Date paymentDate) {
+    public void Dues(long duesId, double totalPayment, long apartmentId, long flatNumber, String paymentDate) {
         this.duesId = duesId;
         this.totalPayment = totalPayment;
         this.apartmentId = apartmentId;
@@ -54,11 +54,11 @@ public class Dues {
         this.flatNumber = flatNumber;
     }
 
-    public Date getPaymentDate() {
+    public String getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public void setPaymentDate(String paymentDate) {
         this.paymentDate = paymentDate;
     }
 

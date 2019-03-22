@@ -35,6 +35,9 @@ public class PersonController {
     @Autowired
     private VotingRepository votingRepository;
 
+    @Autowired
+    private DuesRepository duesRepository;
+
     @PostMapping("/addPerson")
     public Person addNewPerson(@Valid @RequestBody Person person) {
         return personRepository.save(person);
@@ -218,5 +221,35 @@ public class PersonController {
     @GetMapping("/getVoting")
     public Voting getVoting(@RequestParam(value = "voteId") long voteId) {
         return votingRepository.findByVoteID(voteId);
+    }
+
+    @GetMapping("/getDues")
+    public List<Dues> getDues(@RequestParam(value = "flatNumber") int flatNumber, @RequestParam(value = "apartmentId") long apartmentId) {
+        return duesRepository.findAllByApartmentIdAndFlatNumber(apartmentId, flatNumber);
+    }
+
+    @PostMapping("/addDue")
+    public Dues addDue(@Valid @RequestBody Dues dues) {
+        return duesRepository.save(dues);
+    }
+
+    @GetMapping("/getDue")
+    public Dues getDue(@RequestParam(value = "duesId") long duesId) {
+        return duesRepository.findByDuesId(duesId);
+    }
+
+    @GetMapping("/deleteDue")
+    public boolean deleteDue(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "apartmentId",required = true)long apartmentId) {
+        Dues dues = duesRepository.findByDuesId(id);
+        if (dues != null) {
+            duesRepository.delete(dues);
+            return true;
+        }
+        return false;
+    }
+
+    @PutMapping("/updateDue")
+    public Dues updateDue(@Valid @RequestBody Dues dues) {
+        return duesRepository.save(dues);
     }
 }
