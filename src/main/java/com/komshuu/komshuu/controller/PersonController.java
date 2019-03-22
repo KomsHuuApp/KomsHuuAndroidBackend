@@ -224,7 +224,8 @@ public class PersonController {
     }
 
     @GetMapping("/getDues")
-    public List<Dues> getDues(@RequestParam(value = "flatNumber") int flatNumber, @RequestParam(value = "apartmentId") long apartmentId) {
+    public List<Dues> getDues(@RequestParam(value = "flatNumber") long flatNumber, @RequestParam(value = "apartmentId") long apartmentId) {
+        System.out.println(flatNumber + " " + apartmentId);
         return duesRepository.findAllByApartmentIdAndFlatNumber(apartmentId, flatNumber);
     }
 
